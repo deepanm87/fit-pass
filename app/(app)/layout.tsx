@@ -1,4 +1,5 @@
 import { ClerkProvider } from "@clerk/nextjs"
+import { SanityLive } from "@/sanity/lib/live"
 
 export default function AppLayout({
   children
@@ -8,6 +9,7 @@ export default function AppLayout({
   return (
     <ClerkProvider>
       {children}
+      <SanityLive />
     </ClerkProvider>
   )
 }
