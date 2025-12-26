@@ -164,8 +164,8 @@ export default function OnboardingPage() {
 
                   <div className="flex gap-3">
                     <Button
-                      variant="outline"
-                      onClick={handleBack}
+                      onClick={handleComplete}
+                      disabled={isSubmitting || !radius}
                       className="flex-1 h-12 text-base rounded-xl"
                     >
                       {isSubmitting ? (

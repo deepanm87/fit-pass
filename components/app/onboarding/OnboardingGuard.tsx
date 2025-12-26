@@ -14,27 +14,22 @@ export function OnboardingGuard({ children }: OnboardingGuardProps) {
   const router = useRouter()
 
   useEffect(() => {
-    if (!isLoaded) {
+    if (!isLoaded) return
+    if (!user) return
+
+    const hasOnboarded = user.publicMetadata?.hasOnboarded as boolean | undefined
+
+    // If user has already onboarded but is on onboarding routes, send them home
+    if (hasOnboarded && pathname?.startsWith("/onboarding")) {
+      router.push("/")
       return
     }
 
-    if (!user) {
-      return
-    }
+    // Allow studio routes without forcing onboarding
+    if (pathname?.startsWith("/studio")) return
 
-    if (pathname?.startsWith("/onboarding")) {
-      return
-    }
-
-    if (pathname?.startsWith("/studio")) {
-      return
-    }
-
-    const hasOnboarded = user.publicMetadata?.hasOnboarded as
-      | boolean
-      | undefined
-
-    if (!hasOnboarded) {
+    // If user hasn't onboarded and isn't already on the onboarding flow, push them there
+    if (!hasOnboarded && !pathname?.startsWith("/onboarding")) {
       router.push("/onboarding")
     }
   }, [isLoaded, user, pathname, router])
