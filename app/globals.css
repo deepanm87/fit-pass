@@ -191,3 +191,7 @@
     @apply !border-transparent !bg-transparent;
   }
 }
+
+button {
+  cursor: pointer
+}
