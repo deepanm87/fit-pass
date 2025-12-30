@@ -2,6 +2,10 @@ import { ClerkProvider } from "@clerk/nextjs"
 import { OnboardingGuard } from "@/components/app/onboarding/OnboardingGuard"
 import { SanityLive } from "@/sanity/lib/live"
 import { AppHeader } from "@/components/app/layout/AppHeader"
+import { ChatStoreProvider } from "@/lib/store/chat-store-provider"
+import { AppShell } from "@/components/app/layout/AppShell"
+import { ChatSheet } from "@/components/app/chat/ChatSheet"
+import { ChatButton } from "@/components/app/chat/ChatButton"
 
 export default function AppLayout({
   children
@@ -10,11 +14,17 @@ export default function AppLayout({
 }>) {
   return (
     <ClerkProvider>
-      <OnboardingGuard>
-        <AppHeader />
-        {children}
-      </OnboardingGuard>     
-      <SanityLive />
+      <ChatStoreProvider>
+        <AppShell>
+          <OnboardingGuard>
+            <AppHeader />
+            {children}
+          </OnboardingGuard>  
+        </AppShell>
+        <ChatButton />
+        <ChatSheet />
+        <SanityLive />
+      </ChatStoreProvider>    
     </ClerkProvider>
   )
 }

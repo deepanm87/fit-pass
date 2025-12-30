@@ -18,7 +18,7 @@ export const TIER_PRICING = {
   champion: { monthly: 99, annual: 990, perClass: null }
 } as const
 
-export const FREE_TRIAL_DAYS = 3
+export const FREE_TRIAL_DAYS = 7
 
 export const ANNUAL_DISCOUNT_PERCENT = 17
 
