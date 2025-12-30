@@ -30,7 +30,7 @@ export const bookingType = defineType({
       options: {
         list: [
           { title: "Confirmed", value: "confirmed" },
-          { title: "Cancelled", value: "canceled" },
+          { title: "Canceled", value: "canceled" },
           { title: "Attended", value: "attended" },
           { title: "No Show", value: "noShow" }
         ],
@@ -49,7 +49,7 @@ export const bookingType = defineType({
       type: "datetime",
       description: "When the booking was cancelled",
       readOnly: true,
-      hidden: ({ document }) => document?.status !== "cancelled"
+      hidden: ({ document }) => document?.status !== "canceled"
     }),
     defineField({
       name: "attendedAt",
@@ -99,7 +99,7 @@ export const bookingType = defineType({
 
       const statusEmoji: Record<string, string> = {
         confirmed: "✓",
-        cancelled: "✗",
+        canceled: "✗",
         attended: "✓✓",
         noShow: "⚠"
       }

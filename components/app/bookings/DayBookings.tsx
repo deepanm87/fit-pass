@@ -21,7 +21,7 @@ interface DayBookingsProps {
 
 export function DayBookings({ bookings, selectedDate }: DayBookingsProps) {
   const dayBookings = bookings.filter(booking => {
-    if (booking.status === "cancelled") {
+    if (booking.status === "canceled") {
       return false
     }
 

@@ -1,4 +1,5 @@
 import { createAgentUIStreamResponse } from "ai"
+import type { Agent } from "ai"
 import { fitnessAgent } from "@/lib/ai/agent"
 import { auth } from "@clerk/nextjs/server"
 import { getUserTier } from "@/lib/subscription"
@@ -75,7 +76,7 @@ export async function POST(request: Request) {
   ]
 
   return createAgentUIStreamResponse({
-    agent: fitnessAgent,
-    messages: enhancedMessages
+    agent: fitnessAgent as unknown as Agent,
+    uiMessages: enhancedMessages
   })
 }

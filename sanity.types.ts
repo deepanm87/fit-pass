@@ -57,7 +57,7 @@ export type ClassSession = {
   };
   startTime?: string;
   maxCapacity?: number;
-  status?: "scheduled" | "cancelled" | "completed";
+  status?: "scheduled" | "canceled" | "completed";
 };
 
 export type Activity = {
@@ -623,7 +623,7 @@ export type SESSION_FOR_BOOKING_QUERYResult = {
   _id: string;
   startTime: string | null;
   maxCapacity: number | null;
-  status: "cancelled" | "completed" | "scheduled" | null;
+  status: "canceled" | "completed" | "scheduled" | null;
   activity: {
     _id: string;
     tierLevel: "basic" | "champion" | "performance" | null;
@@ -662,8 +662,10 @@ export type USER_SESSION_BOOKING_QUERYResult = {
   status: "attended" | "canceled" | "confirmed" | "noShow" | null;
 } | null;
 // Variable: CANCELLED_BOOKING_QUERY
-// Query: *[  _type == "booking"  && user._ref == $userProfileId  && classSession._ref == $sessionId  && status == "cancelled"][0]{ _id }
-export type CANCELLED_BOOKING_QUERYResult = null;
+// Query: *[  _type == "booking"  && user._ref == $userProfileId  && classSession._ref == $sessionId  && status == "canceled"][0]{ _id }
+export type CANCELLED_BOOKING_QUERYResult = {
+  _id: string;
+} | null;
 // Variable: USER_BOOKED_SESSION_IDS_QUERY
 // Query: *[  _type == "booking"  && user->clerkId == $clerkId  && status == "confirmed"  && classSession->startTime > now()].classSession._ref
 export type USER_BOOKED_SESSION_IDS_QUERYResult = Array<string | null>;
@@ -686,7 +688,7 @@ export type UPCOMING_SESSIONS_QUERYResult = Array<{
   _id: string;
   startTime: string | null;
   maxCapacity: number | null;
-  status: "cancelled" | "completed" | "scheduled" | null;
+  status: "canceled" | "completed" | "scheduled" | null;
   currentBookings: number;
   activity: {
     _id: string;
@@ -727,7 +729,7 @@ export type SESSION_BY_ID_QUERYResult = {
   _id: string;
   startTime: string | null;
   maxCapacity: number | null;
-  status: "cancelled" | "completed" | "scheduled" | null;
+  status: "canceled" | "completed" | "scheduled" | null;
   currentBookings: number;
   activity: {
     _id: string;
@@ -809,7 +811,7 @@ export type SESSIONS_BY_ACTIVITY_QUERYResult = Array<{
   _id: string;
   startTime: string | null;
   maxCapacity: number | null;
-  status: "cancelled" | "completed" | "scheduled" | null;
+  status: "canceled" | "completed" | "scheduled" | null;
   currentBookings: number;
   venue: {
     _id: string;
@@ -824,7 +826,7 @@ export type FILTERED_SESSIONS_QUERYResult = Array<{
   _id: string;
   startTime: string | null;
   maxCapacity: number | null;
-  status: "cancelled" | "completed" | "scheduled" | null;
+  status: "canceled" | "completed" | "scheduled" | null;
   currentBookings: number;
   activity: {
     _id: string;
@@ -870,7 +872,7 @@ export type SEARCH_SESSIONS_QUERYResult = Array<{
   _id: string;
   startTime: string | null;
   maxCapacity: number | null;
-  status: "cancelled" | "completed" | "scheduled" | null;
+  status: "canceled" | "completed" | "scheduled" | null;
   currentBookings: number;
   activity: {
     _id: string;
@@ -1025,7 +1027,7 @@ declare module "@sanity/client" {
     "*[\n  _type == \"booking\" \n  && _id == $bookingId \n  && user._ref == $userProfileId\n][0]{\n  _id,\n  status,\n  classSession->{\n    _id,\n    startTime,\n    activity->{\n      duration\n    }\n  }\n}": BOOKING_FOR_ATTENDANCE_QUERYResult;
     "count(*[\n  _type == \"booking\" \n  && user->clerkId == $userId \n  && status in [\"confirmed\", \"attended\", \"noShow\"]\n  && classSession->startTime >= $monthStart\n  && classSession->startTime < $monthEnd\n])": MONTHLY_BOOKINGS_COUNT_QUERYResult;
     "*[\n  _type == \"booking\"\n  && user->clerkId == $clerkId\n  && classSession._ref == $sessionId\n  && status in [\"confirmed\", \"attended\"]\n][0]{\n  _id,\n  status\n}": USER_SESSION_BOOKING_QUERYResult;
-    "*[\n  _type == \"booking\"\n  && user._ref == $userProfileId\n  && classSession._ref == $sessionId\n  && status == \"cancelled\"\n][0]{ _id }": CANCELLED_BOOKING_QUERYResult;
+    "*[\n  _type == \"booking\"\n  && user._ref == $userProfileId\n  && classSession._ref == $sessionId\n  && status == \"canceled\"\n][0]{ _id }": CANCELLED_BOOKING_QUERYResult;
     "*[\n  _type == \"booking\"\n  && user->clerkId == $clerkId\n  && status == \"confirmed\"\n  && classSession->startTime > now()\n].classSession._ref": USER_BOOKED_SESSION_IDS_QUERYResult;
     "*[\n  _type == \"category\"\n] | order(name asc) {\n  _id,\n  name,\n  slug,\n  description,\n  icon\n}": CATEGORIES_QUERYResult;
     "*[\n  _type == \"classSession\"\n  && startTime > now()\n  && status == \"scheduled\"\n] | order(startTime asc) {\n  _id,\n  startTime,\n  maxCapacity,\n  status,\n  \"currentBookings\": count(*[\n    _type == \"booking\" \n    && classSession._ref == ^._id \n    && status == \"confirmed\"\n  ]),\n  activity->{\n    _id,\n    name,\n    slug,\n    instructor,\n    duration,\n    tierLevel,\n    \"image\": images[0]\n  },\n  venue->{\n    _id,\n    name,\n    slug,\n    \"city\": address.city,\n    address {\n      lat,\n      lng,\n      fullAddress\n    }\n  }\n}": UPCOMING_SESSIONS_QUERYResult;

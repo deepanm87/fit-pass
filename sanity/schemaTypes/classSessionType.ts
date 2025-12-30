@@ -46,7 +46,7 @@ export const classSessionType = defineType({
       options: {
         list: [
           { title: "Scheduled", value: "scheduled" },
-          { title: "Cancelled", value: "cancelled" },
+          { title: "Canceled", value: "canceled" },
           { title: "Completed", value: "completed" }
         ],
         layout: "radio"
@@ -85,7 +85,7 @@ export const classSessionType = defineType({
         })
         : "No date"
 
-      const statusBadge = status === "cancelled" ? " [CANCELLED]" : ""
+      const statusBadge = status === "canceled" ? " [CANCELED]" : ""
 
       return {
         title: `${activityName || "No activity"}${statusBadge}`,

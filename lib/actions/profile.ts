@@ -144,12 +144,18 @@ export async function getUserPreferences(): Promise<ProfilePreferences | null> {
       params: { clerkId: userId }
     })
 
-    if (!userProfile.data?.location || !userProfile.data?.searchRadius) {
+    const loc = userProfile.data?.location
+
+    if (!loc || loc.lat == null || loc.lng == null || !loc.address || !userProfile.data?.searchRadius) {
       return null
     }
 
     return {
-      location: userProfile.data.location,
+      location: {
+        lat: loc.lat,
+        lng: loc.lng,
+        address: loc.address
+      },
       searchRadius: userProfile.data.searchRadius
 
     }

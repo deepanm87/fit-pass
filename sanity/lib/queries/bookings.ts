@@ -183,7 +183,7 @@ export const CANCELLED_BOOKING_QUERY = defineQuery(`*[
   _type == "booking"
   && user._ref == $userProfileId
   && classSession._ref == $sessionId
-  && status == "cancelled"
+  && status == "canceled"
 ][0]{ _id }`);
 
 // Get user's booked session IDs (for showing booked status on session cards)

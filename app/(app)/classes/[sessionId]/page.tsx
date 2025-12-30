@@ -128,9 +128,9 @@ export default async function ClassDetailPage({ params }: PageProps) {
                   {activity?.name ?? "Unknown Class"}
                 </h1>
 
-                {activity?.description && (
+                {activity?.category?.name && (
                   <Badge variant="secondary" className="text-sm">
-                    {activity.category.name}
+                    {activity?.category?.name}
                   </Badge>
                 )}
               </div>

@@ -262,7 +262,7 @@
             },
             {
               "type": "string",
-              "value": "cancelled"
+              "value": "canceled"
             },
             {
               "type": "string",

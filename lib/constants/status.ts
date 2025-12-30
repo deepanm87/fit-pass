@@ -1,12 +1,12 @@
 export const SESSION_STATUS_OPTIONS = [
   { value: "scheduled", label: "Scheduled" },
-  { value: "cancelled", label: "Cancelled" },
+  { value: "canceled", label: "Canceled" },
   { value: "completed", label: "Completed" } 
 ] as const
 
 export const SESSION_STATUS_COLORS: Record<string, string> = {
   scheduled: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-  cancelled: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+  canceled: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
   completed: "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200"
 }
 
@@ -21,7 +21,7 @@ export const BOOKING_STATUS_COLORS: Record<string, string> = {
 const STATUS_LABELS: Record<string, string> = {
   confirmed: "Confirmed",
   attended: "Attended",
-  cancelled: "Cancelled",
+  canceled: "Canceled",
   noShow: "No-show",
   inProgress: "In Progress"
 }
@@ -37,7 +37,7 @@ export function getEffectiveStatus(
   classStartTime: Date,
   classDurationMinutes: number = 60
 ): string {
-  if (status === "attended" || status === "cancelled") {
+  if (status === "attended" || status === "canceled") {
     return status
   }
 

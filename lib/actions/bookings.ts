@@ -124,10 +124,10 @@ export async function createBooking(sessionId: string): Promise<BookingResult> {
     }
 
     // Check if there's a cancelled booking for this session that we can reactivate
-    const cancelledBooking = await client.fetch(CANCELLED_BOOKING_QUERY, {
+    const cancelledBooking = (await client.fetch(CANCELLED_BOOKING_QUERY, {
       userProfileId,
       sessionId,
-    });
+    })) as { _id: string } | null;
 
     let bookingId: string;
 
@@ -205,8 +205,8 @@ export async function cancelBooking(bookingId: string): Promise<BookingResult> {
     }
 
     // Check if already cancelled
-    if (booking.status === "cancelled") {
-      return { success: false, error: "Booking is already cancelled" };
+    if (booking.status === "canceled") {
+      return { success: false, error: "Booking is already canceled" };
     }
 
     // Check if class has already started
@@ -222,7 +222,7 @@ export async function cancelBooking(bookingId: string): Promise<BookingResult> {
     await writeClient
       .patch(bookingId)
       .set({
-        status: "cancelled",
+        status: "canceled",
         cancelledAt: new Date().toISOString(),
       })
       .commit();
@@ -230,7 +230,7 @@ export async function cancelBooking(bookingId: string): Promise<BookingResult> {
     revalidatePath("/bookings");
     revalidatePath("/classes");
 
-    return { success: true, message: "Booking cancelled successfully" };
+    return { success: true, message: "Booking canceled successfully" };
   } catch (error) {
     console.error("Cancel booking error:", error);
     return { success: false, error: "Failed to cancel booking" };

@@ -26,7 +26,7 @@ export function BookingsCalendar({
       if (!booking.classSession?.startTime) {
         return acc
       }
-      if (booking.status === "cancelled") {
+      if (booking.status === "canceled") {
         return acc
       }
 
