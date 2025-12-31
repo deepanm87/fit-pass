@@ -191,10 +191,16 @@ function ImageThumbnail({
   let imageUrl: string | null = null
 
   if (assetRef) {
-    const match = assetRef.match(/^image-([a-zA-Z0-9+])-(\d+x\d+)-(\w+)$/)
+    // Sanity asset refs look like: image-<assetId>-<width>x<height>-<format>
+    // Capture the full asset id (may include hyphens) and dimensions/format
+    const match = assetRef.match(/^image-([a-zA-Z0-9-]+)-(\d+x\d+)-(\w+)$/)
     if (match) {
       const [, id, dimensions, format] = match
       imageUrl = `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${id}-${dimensions}.${format}`
+    } else {
+      // Fallback: if the ref has an unexpected shape, try using the remainder after "image-"
+      const fallback = assetRef.replace(/^image-/, "")
+      imageUrl = `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${fallback}`
     }
   }
 
