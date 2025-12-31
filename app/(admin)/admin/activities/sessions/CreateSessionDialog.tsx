@@ -64,6 +64,7 @@ export function CreateSessionDialog({
       })
       setFormData({ venueId: "", startTime: "", maxCapacity: 20 })
       setOpen(false)
+      onCreated()
     } catch (error) {
       console.error(`Failed to create session: ${error}`)
     } finally {
@@ -71,8 +72,15 @@ export function CreateSessionDialog({
     }
   }
 
+  const handleOpenChange = (val: boolean) => {
+    setOpen(val)
+    if (val) {
+      setFormData(f => ({ ...f, startTime: getDefaultDateTime() }))
+    }
+  }
+
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
           <Plus className="mr-2 size-4" />
@@ -98,11 +106,25 @@ export function CreateSessionDialog({
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="session-startTime">Date & Time *</Label>
-              <Input 
+              <Input
+                id="session-startTime"
+                type="datetime-local"
+                value={formData.startTime}
+                onChange={e =>
+                  setFormData({
+                    ...formData,
+                    startTime: e.target.value
+                  })
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="session-capacity">Capacity *</Label>
+              <Input
                 id="session-capacity"
                 type="number"
                 value={formData.maxCapacity}
-                onChange={e => 
+                onChange={e =>
                   setFormData({
                     ...formData,
                     maxCapacity: Number(e.target.value)
