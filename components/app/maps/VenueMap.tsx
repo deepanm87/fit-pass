@@ -68,7 +68,7 @@ export function VenueMap({
       <MapMarker
         position={center}
         icon={
-          <div className="flex h-10 w-10 items-center justify-center rounded-full border-[3px] border-white bg-linear-to-br from-violet-500 to-purple-500 shadow-lg">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full border-[3px] border-white bg-gradient-to-br from-violet-500 to-purple-500 shadow-lg">
             <MapPinIcon className="size-5 text-white" />
           </div>
         }

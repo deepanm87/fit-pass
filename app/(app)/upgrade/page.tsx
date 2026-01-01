@@ -28,7 +28,7 @@ export default async function UpgradePage({ searchParams }: PageProps) {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="border-g bg-linear-to-br from-primary/10 via-background to-primary/5">
+      <div className="border-g bg-gradient-to-br from-primary/10 via-background to-primary/5">
         <div className="container mx-auto px-4 py-12 text-center">
           <Badge variant="secondary" className="mb-4">
             <Sparkles className="size-3 mr-1" />

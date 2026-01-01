@@ -32,19 +32,19 @@ import {
 } from "@/lib/constants/subscription"
 
 const categories = [
-  { name: "Yoga", icon: Heart, classes: "2400+", color: "text-rose-500" },
-  { name: "HIIT", icon: Flame, classes: "1800+", color: "text-orange-500" },
-  { name: "Cycling", icon: Bike, classes: "950+", color: "text-amber-500" },
-  { name: "Strength", icon: Dumbbell, classes: "3200+", color: "text-red-500" },
-  { name: "Pilates", icon: Sparkles, classes: "1100+", color: "text-pink-500" },
-  { name: "Boxing", icon: Zap, classes: "720+", color: "text-orange-600" }
+  { name: "Yoga", icon: Heart, classes: "10+", color: "text-rose-500" },
+  { name: "HIIT", icon: Flame, classes: "10+", color: "text-orange-500" },
+  { name: "Cycling", icon: Bike, classes: "10+", color: "text-amber-500" },
+  { name: "Strength", icon: Dumbbell, classes: "10+", color: "text-red-500" },
+  { name: "Pilates", icon: Sparkles, classes: "10+", color: "text-pink-500" },
+  { name: "Boxing", icon: Zap, classes: "10+", color: "text-orange-600" }
 ]
 
 const stats = [
-  { value: "10,000+", label: "Classes Available" },
-  { value: "500+", label: "Partner Studios" },
-  { value: "50,000+", label: "Active Members" },
-  { value: "25+", label: "Cities" }
+  { value: "10+", label: "Classes Available" },
+  { value: "5+", label: "Partner Studios" },
+  { value: "10+", label: "Active Members" },
+  { value: "5+", label: "Cities" }
 ]
 
 const steps = [

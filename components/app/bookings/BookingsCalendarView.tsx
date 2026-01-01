@@ -14,7 +14,7 @@ export function BookingsCalendarView({ bookings }: BookingsCalendarViewProps) {
   const [selectedDate, setSelectedDate] = useState<Date>(startOfToday())
 
   return (
-    <div className="grid gap-6 md:grid-cols-[minmax(320px, 400px)_1fr]">
+    <div className="grid gap-6 md:grid-cols-[minmax(320px,420px)_1fr] lg:grid-cols-[minmax(360px,480px)_1fr] md:gap-8">
       <div>
         <BookingsCalendar 
           bookings={bookings}

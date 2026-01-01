@@ -37,12 +37,12 @@ export function VenueCard({ venue, href }: VenueCardProps) {
               className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
           ) : (
-            <div className="flex h-full items-center justify-center bg-linear-to-br from-muted to-muted/50 text-muted-foreground">
+            <div className="flex h-full items-center justify-center bg-gradient-to-br from-muted to-muted/50 text-muted-foreground">
               <span className="text-4xl opacity-20">🏢</span>
             </div>
           )}
 
-          <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
           {venue.city && (
             <div className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-xs font-medium text-foreground shadow-md backdrop-blur-sm dark:bg-black/80">

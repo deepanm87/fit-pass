@@ -41,7 +41,7 @@ export default async function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="border-b bg-linear-to-r from-primary/5 via-background to-primary/5">
+      <div className="border-b bg-gradient-to-r from-primary/5 via-background to-primary/5">
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-3xl md:text-4xl font-bold">Profile</h1>
           <p className="text-muted-foreground mt-2">

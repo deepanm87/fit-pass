@@ -63,7 +63,7 @@ export function BookingsCalendar({
         onSelect={date => date && onDateSelect(date)}
         month={month}
         onMonthChange={setMonth}
-        className="w-full [--cell-size: --spacing(10)] sm:[--cell-size: --spacing(12)]"
+        className="w-full [--cell-size: --spacing(10)] sm:[--cell-size: --spacing(12)] md:[--cell-size: --spacing(16)] lg:[--cell-size: --spacing(18)]"
         classNames={{
           today: ""
         }}
