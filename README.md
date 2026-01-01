@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a full-stack app called FitPass that allows authenticated users to view and book upcoming classes and save them to booked classes page with the ability to cancel them as well. It also has an admin panel such that the admin user can create new venues and classes. 
 
-## Getting Started
+It allows users to set a location and view classes in your locality to book and view booked classes in my bookings page. It has a profile to view and change subscription plans and change location settings.
 
-First, run the development server:
+This is the landing page.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<img width="1810" height="1262" alt="landing page" src="https://github.com/user-attachments/assets/06783a42-b20f-497e-82b7-fb0d23539673" />
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This app supports authentication via Clerk API.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+It redirects new users to an onboarding page to complete setting up the location preferences prior to booking classes and to select the plan which is also configured by Clerk API.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+<img width="1055" height="690" alt="Onboarding page 1" src="https://github.com/user-attachments/assets/90453b48-aa4a-48cf-ab46-83677f6297eb" />
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+<img width="1070" height="734" alt="Onboarding page 2" src="https://github.com/user-attachments/assets/04099bf0-6ebd-4b16-b060-3b1261c04625" />
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Once the onboarding is complete, changes can be made in the profile page.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<img width="1716" height="1122" alt="profile page" src="https://github.com/user-attachments/assets/6171e300-de68-457c-94c2-6503fea336fc" />
 
-## Deploy on Vercel
+This is the plans upgrade page wherein user can switch to any of the plans.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<img width="1628" height="1185" alt="plans upgrade page" src="https://github.com/user-attachments/assets/c8df49af-223a-4396-b63e-e926bd79b024" />
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
